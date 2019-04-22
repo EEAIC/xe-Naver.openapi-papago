@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<lang>
+	<item name="comment_translate">
+		<value xml:lang="ko"><![CDATA[댓글 번역]]></value>
+		<value xml:lang="en"><![CDATA[Translate Comment]]></value>
+	</item>
+    <item name="language_select">
+		<value xml:lang="ko"><![CDATA[언어 선택]]></value>
+		<value xml:lang="en"><![CDATA[Language Selection]]></value>
+	</item>
+</lang>

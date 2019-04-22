@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon version="0.2">
+    <title xml:lang="ko">NAVER OpenAPI Papago 애드온</title>
+    <description xml:lang="ko">
+    <![CDATA[
+        게시물의 댓글을 원하는 언어로 번역할 수 있는 애드온입니다.
+    ]]>
+    </description>
+    <version>0.5.0</version>
+    <date>2019-04-22</date>
+    <author email_address="artherlim@gmail.com" link="https://github.com/LIFOsitory/xe-Naver.openapi-papago">
+        <name xml:lang="ko">LIFOsitory</name>
+    </author>
+    <extra_vars>
+        <var name="client_id" type="text">
+            <title xml:lang="ko">Client ID</title>
+            <description xml:lang="ko">네이버 API를 호출할 때 클라이언트 아이디와 클라이언트 시크릿 값을 HTTP 헤더에 포함해서 전송해야 API를 호출할 수 있습니다.</description>
+        </var>
+        <var name="client_secret" type="text">
+            <title xml:lang="ko">Client Secret</title>
+            <description xml:lang="ko">클라이언트 시크릿 값은 클라이언트 아이디의 비밀번호와 같은 성격의 값입니다.</description>
+        </var>
+    </extra_vars>
+</addon>
