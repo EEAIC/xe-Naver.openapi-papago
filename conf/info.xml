@@ -20,5 +20,17 @@
             <title xml:lang="ko">Client Secret</title>
             <description xml:lang="ko">클라이언트 시크릿 값은 클라이언트 아이디의 비밀번호와 같은 성격의 값입니다.</description>
         </var>
+        <var name="operating_method" type="select">
+            <title xml:lang="ko">작동 방식</title>
+            <title xml:lang="en">Operating Method</title>
+            <options value="nmt">
+                <title xml:lang="ko">인공신경망 기반 기계 번역</title>
+                <title xml:lang="en">Neural Machine Translation</title>
+            </options>
+            <options value="smt">
+                <title xml:lang="ko">통계 기반 기계 번역</title>
+                <title xml:lang="en">Statistical Machine Translation</title>
+            </options>
+        </var>
     </extra_vars>
 </addon>
