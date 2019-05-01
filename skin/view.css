@@ -1,8 +1,24 @@
 .papago {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .papago .lang-title {
     display: inline;
 }
+
+.translate-lang-select:focus {
+    border-color: #66afe9;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+}
+
+.translated-contents {
+    margin-top: 0.5rem;
+}
+
+.translated-contents .translated-to {
+    color: gray;
+    margin-bottom: 0.25rem;
+}
+
