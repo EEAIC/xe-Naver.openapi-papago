@@ -9,7 +9,7 @@
     ]]>
     </description>
     <version>0.5.0</version>
-    <date>2019-04-22</date>
+    <date>2019-05-01</date>
     <author email_address="artherlim@gmail.com" link="https://github.com/LIFOsitory/xe-Naver.openapi-papago">
         <name xml:lang="ko">LIFOsitory</name>
     </author>
@@ -33,6 +33,15 @@
                 <title xml:lang="ko">통계 기반 기계 번역</title>
                 <title xml:lang="en">Statistical Machine Translation</title>
             </options>
+        </var>
+        <var name="translate_btn_class" type="text">
+            <title xml:lang="ko">번역하기 버튼 클래스 추가</title>
+            <title xml:lang="en">Adding class to translating button</title>
+            <description xml:lang="ko">번역하기 버튼에 클래스를 추가하여 이미 적용중인 사이트의 디자인을 적용시킬 수 있습니다.
+            여러 클래스명은 띄어쓰기하여 구분합니다.
+            </description>
+            <description xml:lang="en">Use additional class name to adapt your site design.
+            Add space between multiple classes</description>
         </var>
     </extra_vars>
 </addon>

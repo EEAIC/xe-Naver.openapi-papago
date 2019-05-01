@@ -1,7 +1,7 @@
 (function($){
-	
+        if(typeof papago_user_class === 'undefined') papago_user_class = '';
         $("#papago_lang_select").insertBefore("#comment");
-        $(".fbItem .action").prepend('<a href="#" onclick="translateContext($(this)); return false;" class="translating-comment"><i class="xi-exchange"></i> 번역하기</a>');
+        $(".fbItem .action").prepend('<a href="#" onclick="translateContext($(this)); return false;" class="' + papago_user_class +' translating-comment"><i class="xi-exchange"></i> 번역하기</a>');
 
 })(jQuery);
 
@@ -35,7 +35,8 @@ function showTranslated(ret_obj, res_tags, translating_btn) {
     {
         var content = ret_obj.translated_content;
     }
-
+    
+    // translating_btn.addClass('disabled');
     translating_btn.hide();
 
     var result_content = $('<div class="translated-contents">' + content + '</div>');

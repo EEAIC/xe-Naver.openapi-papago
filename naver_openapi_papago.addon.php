@@ -16,6 +16,7 @@ if(!class_exists('NaverPapago', false))
         var $is_post = true;
         var $headers = array();
         var $operating_method = NULL;
+        var $user_classes;
         private $addon_info;
 
         function setInfo(&$addon_info)
@@ -25,6 +26,7 @@ if(!class_exists('NaverPapago', false))
             define('CLIENT_SECRET', $this->addon_info->client_secret);
             $this->operating_method = $this->addon_info->operating_method;
             Context::set('papago_operating_method', $this->operating_method);
+            $this->user_classes = $this->addon_info->translate_btn_class;
         }
 
         function setHeaders()
@@ -57,6 +59,8 @@ if(!class_exists('NaverPapago', false))
 
                 } else {
                     $html = $this->loadHtml('head');
+                    if($this->user_classes)
+                        Context::addHtmlHeader('<script>papago_user_class ="'. $this->user_classes .'";</script>');
                     Context::addHtmlFooter($html);
                     Context::loadFile(array('./addons/naver_openapi_papago/skin/view.css', '', '', null), true);
                     Context::loadFile(array('./addons/naver_openapi_papago/naver_openapi_papago.js', 'body', '', null), true);

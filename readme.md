@@ -42,6 +42,35 @@ XpressEngine(XE)은 누구나 쉽고 편하고 자유롭게 콘텐츠를 발행�
 - 기타 설정을 완료한 뒤 저장합니다.
 - PC 또는 Mobile에 체크합니다.
 
+### Based on XEDITION Skin
+XE 기본 스킨인 XEDITION을 기반으로 만들어졌습니다.
+
+번역하기 버튼이 올바르게 뜨기 위해서는 다음과 같은 구조와 클래스명을 가져야 합니다.
+
+```
+<li class="fbItem" id="comment_1284">
+    ...
+    <!--BeforeComment(1284,0)-->
+    <div class="comment_1284_0 xe_content">
+        Comment Contents
+    </div>
+    <!--AfterComment(1284,0)-->									
+    <p class="action">
+        <a href="#" onclick="translateContext($(this)); return false;" class="translating-comment" style="display: inline;"><i class="xi-exchange"></i> 번역하기</a>
+        ...		
+        <a class="comment_1284 this" href="#popup_menu_area" onclick="return false">이 댓글을</a>   			
+    </p>
+</li>
+```
+❗️ 필수 클래스명 : fbItem, action
+
+❗️ 필수 아이디값 : comment_srl (ex. comment_1284)
+
+> 내부 디자인은 view.css 를 통해 수정할 수 있습니다. 
+
+
+
+
 ### Limit
 - 제휴신청은 API를 일 호출 허용량 이상으로 사업적으로 사용하기 위해 API 사용량, API 사용처, API 활용목적에 대해 검토를 받는 절차이며 API 사용처, 활용 목적에 따라 제휴승인이 거절될 수 있습니다.
 

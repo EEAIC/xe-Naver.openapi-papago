@@ -52,4 +52,36 @@
 		<value xml:lang="ko"><![CDATA[인도네시아어]]></value>
 		<value xml:lang="en"><![CDATA[Indonesian]]></value>
 	</item>
+	<item name="papago_lang_de">
+		<value xml:lang="ko"><![CDATA[독일어]]></value>
+		<value xml:lang="en"><![CDATA[German]]></value>
+	</item>
+	<item name="papago_lang_hi">
+		<value xml:lang="ko"><![CDATA[힌디어]]></value>
+		<value xml:lang="en"><![CDATA[Hindi]]></value>
+	</item>
+	<item name="papago_lang_pt">
+		<value xml:lang="ko"><![CDATA[포루트갈어]]></value>
+		<value xml:lang="en"><![CDATA[Porutgal]]></value>
+	</item>
+	<item name="papago_lang_fa">
+		<value xml:lang="ko"><![CDATA[페르시아어]]></value>
+		<value xml:lang="en"><![CDATA[Persian]]></value>
+	</item>
+	<item name="papago_lang_ar">
+		<value xml:lang="ko"><![CDATA[아랍어]]></value>
+		<value xml:lang="en"><![CDATA[Arabic]]></value>
+	</item>
+	<item name="papago_lang_mm">
+		<value xml:lang="ko"><![CDATA[미얀마어]]></value>
+		<value xml:lang="en"><![CDATA[Myanmar]]></value>
+	</item>
+	<item name="papago_lang_ru">
+		<value xml:lang="ko"><![CDATA[러시아어]]></value>
+		<value xml:lang="en"><![CDATA[Russian]]></value>
+	</item>
+	<item name="papago_lang_it">
+		<value xml:lang="ko"><![CDATA[이탈리아어]]></value>
+		<value xml:lang="en"><![CDATA[Italian]]></value>
+	</item>
 </lang>
