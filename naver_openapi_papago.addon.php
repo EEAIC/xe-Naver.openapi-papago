@@ -15,7 +15,7 @@ if(!class_exists('NaverPapago', false))
         var $target_acts = NULL;
         var $is_post = true;
         var $headers = array();
-
+        var $operating_method = NULL;
         private $addon_info;
 
         function setInfo(&$addon_info)
@@ -23,6 +23,8 @@ if(!class_exists('NaverPapago', false))
             $this->addon_info = $addon_info;
             define('CLIENT_ID', $this->addon_info->client_id);
             define('CLIENT_SECRET', $this->addon_info->client_secret);
+            $this->operating_method = $this->addon_info->operating_method;
+            Context::set('papago_operating_method', $this->operating_method);
         }
 
         function setHeaders()
@@ -36,27 +38,25 @@ if(!class_exists('NaverPapago', false))
             $this->addon_path = $addon_path; 
         }
 
-        function loadHtml()
+        function loadHtml($fileName)
         {   
             Context::loadLang(_XE_PATH_ . 'addons/naver_openapi_papago/lang');
-            if (!$this->html) 
-                $this->html = TemplateHandler::getInstance()->compile($this->addon_path . '/skin//'. $this->skin, 'view');
+            $html = TemplateHandler::getInstance()->compile($this->addon_path . '/skin//'. $this->skin, $fileName);
 
-            return $this->html;
+            return $html;
         }
 
         function before_module_init(&$ModuleHandler)
         {
-           
             $document_srl = Context::get('document_srl');
             if ($document_srl){
                 $oDocumentModel = getModel('document');
                 $columnList = array('document_srl', 'module_srl', 'comment_count');
                 $oDocument = $oDocumentModel->getDocument($document_srl, FALSE, TRUE, $columnList);
                 if ($oDocument->getCommentCount() < 1) {
-                    echo "no papago";
+
                 } else {
-                    $html = $this->loadHtml();
+                    $html = $this->loadHtml('head');
                     Context::addHtmlFooter($html);
                     Context::loadFile(array('./addons/naver_openapi_papago/skin/view.css', '', '', null), true);
                     Context::loadFile(array('./addons/naver_openapi_papago/naver_openapi_papago.js', 'body', '', null), true);
@@ -65,15 +65,47 @@ if(!class_exists('NaverPapago', false))
             return true;
         }
 
-        function before_module_init_doTranslate() {
+        function before_module_init_doTranslate() 
+        {
             $value = Context::get("papago_value");
-            $destLang = Context::Get("papago_lang");
+            $destLang = Context::get("papago_lang");
             $langCode = $this->detectLangs($value);
            
-            $rst = $this->getTranslatedText($langCode['langCode'], $destLang, $value);
-            $result = $rst["message"];
-            $r = $result["result"];
-            printf("<response>\r\n <error>0</error>\r\n <view><![CDATA[%s]]></view>\r\n</response>", $r["translatedText"]);
+            $responseResult = $this->getTranslatedText($langCode['langCode'], $destLang, $value);
+            $error = 0;
+            $errorCode = $responseResult["errorCode"];
+            if ($errorCode) 
+            {
+                $errMessage = $responseResult["errorMessage"];
+            }
+            else 
+            {
+                $errorCode = false;
+                $resultMessage = $responseResult["message"];
+                $translatedContext = $resultMessage["result"]["translatedText"];
+                $srcLangType = $resultMessage["result"]["srcLangType"];
+                if ($srcLangType == 'zh-CN' || $srcLangType == 'zh-TW') 
+                {
+                   $srcLangType = str_replace('-', '_', $srcLangType);
+                } 
+                if ($this->operating_method == 'smt') {
+                    $tarLangType = $destLang;
+                } 
+                else 
+                {
+                    $tarLangType = $resultMessage["result"]["tarLangType"];
+                }
+                if ($tarLangType == 'zh-CN' || $tarLangType == 'zh-TW')
+                {
+                    $tarLangType = str_replace('-', '_', $tarLangType);
+                } 
+                Context::set('papago_srcLangType', $srcLangType);
+                Context::set('papago_tarLangType', $tarLangType);
+                Context::set('papago_content', $translatedContext);
+                $translatedHtml = $this->loadHtml('view');
+            }
+            
+            printf(file_get_contents($this->addon_path . '/tpl/response.result.xml'), $error, $errMessage, $errorCode, $translatedHtml, $errMessage);
             Context::close();
             exit();
             
@@ -110,7 +142,15 @@ if(!class_exists('NaverPapago', false))
 
         function getTranslatedText($source, $target, $input_text)
         {
-            $url = "https://openapi.naver.com/v1/papago/n2mt";
+            if ($this->operating_method == 'smt') 
+            {
+                $url = "https://openapi.naver.com/v1/language/translate";
+            } 
+            else 
+            {
+                $url = "https://openapi.naver.com/v1/papago/n2mt";
+            }
+            
             $encText = urlencode($input_text);
             $postvars = "source=".$source."&target=".$target."&text=".$encText;
             $ch = $this->curlInit($url);
@@ -123,9 +163,6 @@ if(!class_exists('NaverPapago', false))
             return json_decode($response, true);
 
         }
-
-
-
     }
 
     $GLOBALS['__NaverPapago__'] = new NaverPapago;
