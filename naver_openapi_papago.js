@@ -17,7 +17,7 @@ function translateContext($translating_btn) {
     params['papago_action'] = 'doTranslate';
     params['papago_value'] = cmt_val;
     params['papago_lang'] = $('#papago_lang').val();
-    exec_xml('board', 'dispContent', params, showTranslated, new Array('error', 'message', 'papago_code', 'translated_content'), $translating_btn);
+    exec_xml('board', 'dispBoardContent', params, showTranslated, new Array('error', 'message', 'papago_code', 'translated_content'), $translating_btn);
     // exec_json('board.dispContent', params, showTranslated, errorTranslated)
 
 }
