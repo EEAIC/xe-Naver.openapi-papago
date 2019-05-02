@@ -1,0 +1,6 @@
+<response>
+    <error><![CDATA[%s]]></error>
+    <message><![CDATA[%s]]></message>
+    <papago_code><![CDATA[%s]]></papago_code>
+    <translated_content><![CDATA[%s]]></translated_content>
+</response>

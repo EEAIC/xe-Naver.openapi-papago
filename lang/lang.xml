@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<lang>
+	<item name="comment_translate">
+		<value xml:lang="ko"><![CDATA[댓글 번역]]></value>
+		<value xml:lang="en"><![CDATA[Translate Comment]]></value>
+	</item>
+  <item name="language_select">
+		<value xml:lang="ko"><![CDATA[언어 선택]]></value>
+		<value xml:lang="en"><![CDATA[Language Selection]]></value>
+	</item>
+	<item name="translated_to">
+		<value xml:lang="ko"><![CDATA[번역됨]]></value>
+		<value xml:lang="en"><![CDATA[Translated]]></value>
+	</item>
+	<item name="papago_lang_ko">
+		<value xml:lang="ko"><![CDATA[한국어]]></value>
+		<value xml:lang="en"><![CDATA[Korean]]></value>
+	</item>
+	<item name="papago_lang_en">
+		<value xml:lang="ko"><![CDATA[영어]]></value>
+		<value xml:lang="en"><![CDATA[English]]></value>
+	</item>
+	<item name="papago_lang_zh_CN">
+		<value xml:lang="ko"><![CDATA[중국어 간체]]></value>
+		<value xml:lang="en"><![CDATA[Simplified Chinese]]></value>
+	</item>
+	<item name="papago_lang_zh_TW">
+		<value xml:lang="ko"><![CDATA[중국어 번체]]></value>
+		<value xml:lang="en"><![CDATA[Traditional Chinese]]></value>
+	</item>
+	<item name="papago_lang_ja">
+		<value xml:lang="ko"><![CDATA[일본어]]></value>
+		<value xml:lang="en"><![CDATA[Japanese]]></value>
+	</item>
+	<item name="papago_lang_es">
+		<value xml:lang="ko"><![CDATA[스페인어]]></value>
+		<value xml:lang="en"><![CDATA[Spanish]]></value>
+	</item>
+	<item name="papago_lang_fr">
+		<value xml:lang="ko"><![CDATA[프랑스어]]></value>
+		<value xml:lang="en"><![CDATA[French]]></value>
+	</item>
+	<item name="papago_lang_vi">
+		<value xml:lang="ko"><![CDATA[베트남어]]></value>
+		<value xml:lang="en"><![CDATA[Vietnamese]]></value>
+	</item>
+	<item name="papago_lang_th">
+		<value xml:lang="ko"><![CDATA[태국어]]></value>
+		<value xml:lang="en"><![CDATA[Thai]]></value>
+	</item>
+	<item name="papago_lang_id">
+		<value xml:lang="ko"><![CDATA[인도네시아어]]></value>
+		<value xml:lang="en"><![CDATA[Indonesian]]></value>
+	</item>
+	<item name="papago_lang_de">
+		<value xml:lang="ko"><![CDATA[독일어]]></value>
+		<value xml:lang="en"><![CDATA[German]]></value>
+	</item>
+	<item name="papago_lang_hi">
+		<value xml:lang="ko"><![CDATA[힌디어]]></value>
+		<value xml:lang="en"><![CDATA[Hindi]]></value>
+	</item>
+	<item name="papago_lang_pt">
+		<value xml:lang="ko"><![CDATA[포루트갈어]]></value>
+		<value xml:lang="en"><![CDATA[Porutgal]]></value>
+	</item>
+	<item name="papago_lang_fa">
+		<value xml:lang="ko"><![CDATA[페르시아어]]></value>
+		<value xml:lang="en"><![CDATA[Persian]]></value>
+	</item>
+	<item name="papago_lang_ar">
+		<value xml:lang="ko"><![CDATA[아랍어]]></value>
+		<value xml:lang="en"><![CDATA[Arabic]]></value>
+	</item>
+	<item name="papago_lang_mm">
+		<value xml:lang="ko"><![CDATA[미얀마어]]></value>
+		<value xml:lang="en"><![CDATA[Myanmar]]></value>
+	</item>
+	<item name="papago_lang_ru">
+		<value xml:lang="ko"><![CDATA[러시아어]]></value>
+		<value xml:lang="en"><![CDATA[Russian]]></value>
+	</item>
+	<item name="papago_lang_it">
+		<value xml:lang="ko"><![CDATA[이탈리아어]]></value>
+		<value xml:lang="en"><![CDATA[Italian]]></value>
+	</item>
+</lang>

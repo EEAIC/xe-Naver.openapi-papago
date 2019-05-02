@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon version="0.2">
+    <title xml:lang="ko">LIFO Comment Translator(Powered By NAVER™ OpenAPI) 애드온</title>
+    <description xml:lang="ko">
+    <![CDATA[
+        사용자가 개시글의 덧글을 지원하는 언어로 번역하는 기능을 제공합니다.
+        네이버™ 오픈 API의 파파고 API를 지원합니다.
+		파파고 API를 사용하려면 먼저 네이버™ 개발자 센터에서 애플리케이션을 등록하고 클라이언트 아이디와 클라이언트 시크릿을 발급받아야 합니다.
+    ]]>
+    </description>
+    <version>0.5.0</version>
+    <date>2019-05-01</date>
+    <author email_address="artherlim@gmail.com" link="https://github.com/LIFOsitory/xe-Naver.openapi-papago">
+        <name xml:lang="ko">LIFOsitory</name>
+    </author>
+    <extra_vars>
+        <var name="client_id" type="text">
+            <title xml:lang="ko">Client ID</title>
+            <description xml:lang="ko">네이버 API를 호출할 때 클라이언트 아이디와 클라이언트 시크릿 값을 HTTP 헤더에 포함해서 전송해야 API를 호출할 수 있습니다.</description>
+        </var>
+        <var name="client_secret" type="text">
+            <title xml:lang="ko">Client Secret</title>
+            <description xml:lang="ko">클라이언트 시크릿 값은 클라이언트 아이디의 비밀번호와 같은 성격의 값입니다.</description>
+        </var>
+        <var name="operating_method" type="select">
+            <title xml:lang="ko">작동 방식</title>
+            <title xml:lang="en">Operating Method</title>
+            <options value="nmt">
+                <title xml:lang="ko">인공신경망 기반 기계 번역</title>
+                <title xml:lang="en">Neural Machine Translation</title>
+            </options>
+            <options value="smt">
+                <title xml:lang="ko">통계 기반 기계 번역</title>
+                <title xml:lang="en">Statistical Machine Translation</title>
+            </options>
+        </var>
+        <var name="translate_btn_class" type="text">
+            <title xml:lang="ko">번역하기 버튼 클래스 추가</title>
+            <title xml:lang="en">Adding class to translating button</title>
+            <description xml:lang="ko">번역하기 버튼에 클래스를 추가하여 이미 적용중인 사이트의 디자인을 적용시킬 수 있습니다.
+            여러 클래스명은 띄어쓰기하여 구분합니다.
+            </description>
+            <description xml:lang="en">Use additional class name to adapt your site design.
+            Add space between multiple classes</description>
+        </var>
+    </extra_vars>
+</addon>
