@@ -17,13 +17,15 @@ if(!class_exists('NaverPapago', false))
         var $headers = array();
         var $operating_method = NULL;
         var $user_classes;
+        private $client_id;
+        private $client_secret;
         private $addon_info;
 
         function setInfo(&$addon_info)
         {
             $this->addon_info = $addon_info;
-            define('CLIENT_ID', $this->addon_info->client_id);
-            define('CLIENT_SECRET', $this->addon_info->client_secret);
+            $this->client_id = $this->addon_info->client_id;
+            $this->client_secret = $this->addon_info->client_secret;
             $this->operating_method = $this->addon_info->operating_method;
             Context::set('papago_operating_method', $this->operating_method);
             $this->user_classes = $this->addon_info->translate_btn_class;
@@ -31,8 +33,8 @@ if(!class_exists('NaverPapago', false))
 
         function setHeaders()
         {
-            $this->headers[] = "X-Naver-Client-Id: ". CLIENT_ID;
-            $this->headers[] = "X-Naver-Client-Secret: ". CLIENT_SECRET;
+            $this->headers[] = "X-Naver-Client-Id: ". $this->client_id;
+            $this->headers[] = "X-Naver-Client-Secret: ". $this->client_secret;
         }
 
         function setPath($addon_path)
@@ -74,10 +76,11 @@ if(!class_exists('NaverPapago', false))
             $value = Context::get("papago_value");
             $destLang = Context::get("papago_lang");
             $langCode = $this->detectLangs($value);
-           
+   
             $responseResult = $this->getTranslatedText($langCode['langCode'], $destLang, $value);
-            $error = 0;
             $errorCode = $responseResult["errorCode"];
+            $error = 0;
+         
             if ($errorCode) 
             {
                 $errMessage = $responseResult["errorMessage"];
