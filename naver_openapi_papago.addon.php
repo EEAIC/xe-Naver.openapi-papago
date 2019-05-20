@@ -61,8 +61,11 @@ if(!class_exists('NaverPapago', false))
 
                 } else {
                     $html = $this->loadHtml('head');
-                    if($this->user_classes)
+                    if($this->user_classes) 
+                    {
                         Context::addHtmlHeader('<script>papago_user_class ="'. $this->user_classes .'";</script>');
+                        Context::addHtmlHeader('<script>document_srl ="'. $document_srl .'";</script>');
+                    }
                     Context::addHtmlFooter($html);
                     Context::loadFile(array('./addons/naver_openapi_papago/skin/view.css', '', '', null), true);
                     Context::loadFile(array('./addons/naver_openapi_papago/naver_openapi_papago.js', 'body', '', null), true);
@@ -108,11 +111,12 @@ if(!class_exists('NaverPapago', false))
                 } 
                 Context::set('papago_srcLangType', $srcLangType);
                 Context::set('papago_tarLangType', $tarLangType);
+                $translated_direction = $this->loadHtml('view.direction');
                 Context::set('papago_content', $translatedContext);
                 $translatedHtml = $this->loadHtml('view');
             }
             
-            printf(file_get_contents($this->addon_path . '/tpl/response.result.xml'), $error, $errMessage, $errorCode, $translatedHtml, $errMessage);
+            printf(file_get_contents($this->addon_path . '/tpl/response.result.xml'), $error, $errMessage, $errorCode, $translated_direction, $translatedHtml, $errMessage);
             Context::close();
             exit();
             

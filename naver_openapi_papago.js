@@ -2,10 +2,36 @@
         if(typeof papago_user_class === 'undefined') papago_user_class = '';
         $("#papago_lang_select").insertBefore("#comment");
         $(".fbItem .action").prepend('<a href="#" onclick="translateContext($(this)); return false;" class="' + papago_user_class +' translating-comment"><i class="xi-exchange"></i> 번역하기</a>');
-
+        
+        $(".read_body").prepend('<a href="#" onclick="translateDocument($(this)); return false;" class="' + papago_user_class +' translating-document"><i class="xi-exchange"></i> 번역하기</a>');
 })(jQuery);
 
 
+function translateDocument($translating_btn) {
+    var dmt_content = $translating_btn.next("[class^='document_']");
+    console.log(dmt_content);
+    var content = dmt_content.text();
+    splited_content = content.split('\n');
+    splited_content.forEach(function(element) {
+        if (element) {
+            var params = new Array();
+            params['papago_action'] = 'doTranslate';
+            params['papago_value'] = element.trim();
+            params['papago_lang'] = 'en';
+            exec_xml('board', 'dispBoardContent', params, showDocumentTranslated, new Array('error', 'message', 'papago_code', 'translated_content'), $translating_btn, element);
+        }
+    });
+}
+
+function  showDocumentTranslated(ret_obj, res_tags, translating_btn, element) {
+    if (ret_obj.papago_code == '010') {
+        dmt_context = ret_obj.message;
+    } else {
+        dmt_context = ret_obj.translated_content;
+    }
+    var dmt_content = translating_btn.next("[class^='document_']");
+    dmt_content.html(dmt_content.html().replace(element.trim(), dmt_context));
+}
 
 function translateContext($translating_btn) {
     var cmt_content = $translating_btn.parents().siblings('.xe_content');
@@ -17,13 +43,13 @@ function translateContext($translating_btn) {
     params['papago_action'] = 'doTranslate';
     params['papago_value'] = cmt_val;
     params['papago_lang'] = $('#papago_lang').val();
-    exec_xml('board', 'dispBoardContent', params, showTranslated, new Array('error', 'message', 'papago_code', 'translated_content'), $translating_btn);
+    exec_xml('board', 'dispBoardContent', params, showTranslated, new Array('error', 'message', 'papago_code', 'translated_direction', 'translated_content'), $translating_btn);
     // exec_json('board.dispContent', params, showTranslated, errorTranslated)
 
 }
 
 function showTranslated(ret_obj, res_tags, translating_btn) {
-    var cmt_content = translating_btn.parents().siblings('.xe_content');
+    var cmt_content = translating_btn.parents().siblings('.xe_content');    
     var cmt_id = translating_btn.parents('.fbItem').attr('id');
     var papago_loading_id = '#papago_' + cmt_id;
     $(papago_loading_id).remove();
@@ -33,7 +59,7 @@ function showTranslated(ret_obj, res_tags, translating_btn) {
     } 
     else 
     {
-        var content = ret_obj.translated_content;
+        var content = ret_obj.translated_direction +  ret_obj.translated_content;
     }
     
     // translating_btn.addClass('disabled');
